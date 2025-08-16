@@ -52,13 +52,13 @@ Explicación breve:
 
 a) Lista simple (JSON que representa una lista de números):
 
-```
+```json
 [1, 2, 3, 4]
 ```
 
 b) Objeto con varios tipos:
 
-```
+```json
 {
 	"producto": "Cuaderno",
 	"precio": 12.5,
@@ -70,7 +70,7 @@ b) Objeto con varios tipos:
 
 c) Array de objetos (ejemplo típico en APIs):
 
-```
+```json
 [
 	{ "id": 1, "nombre": "Luis" },
 	{ "id": 2, "nombre": "María" }
@@ -84,7 +84,7 @@ c) Array de objetos (ejemplo típico en APIs):
 3. Modificar: cambiar un string por comillas simples para mostrar el error y cómo leer el mensaje del validador.
 4. Mostrar cómo convertir JSON a un objeto en JavaScript (ejemplo corto):
 
-```
+```js
 const jsonText = '{"nombre":"Ana","edad":28}';
 const obj = JSON.parse(jsonText);
 console.log(obj.nombre); // Ana
@@ -92,7 +92,7 @@ console.log(obj.nombre); // Ana
 
 Y cómo convertir un objeto a JSON:
 
-```
+```js
 const texto = JSON.stringify(obj);
 console.log(texto); // '{"nombre":"Ana","edad":28}'
 ```
@@ -107,7 +107,7 @@ Ejercicio 3 (intermedio): Crear un objeto llamado "curso" con: titulo, duracion 
 
 Ejercicio 4 (intermedio): Dado el siguiente JSON, acceder en JavaScript al nombre del segundo alumno:
 
-```
+```js
 const data = '{ "alumnos": [{"nombre":"Diego"},{"nombre":"Carla"}] }';
 // ¿Cómo obtener "Carla"?
 ```
@@ -118,7 +118,7 @@ Ejercicio 5 (desafío): Escribir un JSON válido que represente una lista de tar
 
 Solución 1:
 
-```
+```json
 {
 	"nombre": "Pablo",
 	"edad": 34,
@@ -128,13 +128,13 @@ Solución 1:
 
 Solución 2:
 
-```
+```json
 ["manzana", "banana", "uva"]
 ```
 
 Solución 3:
 
-```
+```json
 {
 	"titulo": "Introducción a APIs",
 	"duracion": 8,
@@ -145,14 +145,14 @@ Solución 3:
 
 Solución 4 (JavaScript):
 
-```
+```js
 const obj = JSON.parse(data);
 console.log(obj.alumnos[1].nombre); // Carla
 ```
 
 Solución 5 (ejemplo):
 
-```
+```json
 [
 	{ "id": 1, "descripcion": "Enviar reporte", "completada": false, "etiquetas": ["trabajo"] },
 	{ "id": 2, "descripcion": "Comprar leche", "completada": true, "etiquetas": ["hogar"] },
