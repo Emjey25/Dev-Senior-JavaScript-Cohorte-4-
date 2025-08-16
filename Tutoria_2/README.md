@@ -1,173 +1,324 @@
-## Clase: Introducción a JSON (para principiantes)
 
-Objetivo: Entregar material claro y práctico para enseñar JSON a personas que no lo conocen. El contenido incluye teoría mínima, ejemplos paso a paso, ejercicios y soluciones.
+## ¿Qué es JSON? (Explicación simple)
 
-Duración sugerida: 60-90 minutos.
+Imagínate que JSON es como una **caja organizada** donde guardamos información de forma ordenada.
 
-Checklist de requisitos del usuario:
+**JSON** significa "JavaScript Object Notation", pero no te preocupes por el nombre complicado. Solo piensa en él como una forma de **escribir información que las computadoras entienden fácilmente**.
 
-- Crear clases (material) sobre JSON lo más entendible posible — Hecho
-- Incluir ejemplos y ejercicios para principiantes — Hecho
-- Proveer soluciones para los ejercicios — Hecho
+### ¿Por qué es importante?
+- Es la forma más común de intercambiar información en internet
+- Las páginas web lo usan para "hablar" con los servidores
+- Es más fácil de leer que otros formatos
 
-## 1. ¿Qué es JSON? (explicación en una frase)
+---
 
-JSON (JavaScript Object Notation) es un formato ligero para intercambiar datos que usa texto legible por humanos y una estructura basada en pares clave:valor y arreglos.
+## ¿Cómo se ve JSON?
 
-Por qué usarlo: es fácil de leer, ampliamente soportado en APIs y en casi todos los lenguajes de programación.
-
-## 2. Estructura básica y tipos de datos
-
-- Objeto: colección desordenada de pares clave:valor encerrada en llaves { }.
-- Arreglo (array): lista ordenada de valores encerrada en corchetes [ ].
-- Valor: puede ser número, cadena (string), booleano (true/false), null, objeto o arreglo.
-
-Reglas importantes (principales errores comunes):
-
-- Las claves (keys) deben ir entre comillas dobles: "nombre".
-- Las cadenas (strings) usan comillas dobles: "hola" (no simples ' ').
-- No se permiten comas finales después del último elemento.
-- No se permiten comentarios dentro del JSON estándar.
-
-Ejemplo simple (explicado):
+JSON se ve muy parecido a los objetos de JavaScript, pero con algunas reglas estrictas:
 
 ```json
 {
-	"nombre": "Ana",
-	"edad": 28,
-	"estudiante": false,
-	"hobbies": ["leer", "correr"],
-	"direccion": { "ciudad": "Lima", "pais": "Perú" }
+  "nombre": "Juan",
+  "edad": 20,
+  "estudiante": true
 }
 ```
 
-Explicación breve:
+### Piénsalo así:
+- Es como una **libreta de contactos** digital
+- Cada "página" tiene información organizada en pares de **etiqueta: valor**
+- La etiqueta siempre va entre comillas dobles `"`
 
-- "nombre" es una clave con valor string.
-- "edad" es un número.
-- "hobbies" es un arreglo de cadenas.
-- "direccion" es un objeto anidado.
+---
 
-## 3. Ejemplos paso a paso
+## Reglas básicas (¡Muy importantes!)
 
-a) Lista simple (JSON que representa una lista de números):
-
+### ✅ SÍ se puede hacer:
 ```json
-[1, 2, 3, 4]
+{
+  "nombre": "Ana"
+}
 ```
 
-b) Objeto con varios tipos:
+### ❌ NO se puede hacer:
+```json
+{
+  nombre: "Ana"
+}
+```
+
+### Las reglas son:
+1. **Siempre usar comillas dobles** `"` (nunca simples `'`)
+2. **Las etiquetas (claves) van entre comillas**
+3. **No poner coma al final**
+
+---
+
+## Tipos de información que puede guardar JSON
+
+### 1. Texto (String)
+```json
+{
+  "nombre": "María",
+  "ciudad": "Madrid"
+}
+```
+
+### 2. Números
+```json
+{
+  "edad": 25,
+  "altura": 1.75
+}
+```
+
+### 3. Verdadero o Falso (Boolean)
+```json
+{
+  "tieneNovio": true,
+  "esEstudiante": false
+}
+```
+
+### 4. Nada/Vacío (null)
+```json
+{
+  "segundoNombre": null
+}
+```
+
+### 5. Listas (Array)
+```json
+{
+  "coloresFavoritos": ["azul", "verde", "rojo"]
+}
+```
+
+### 6. Más información dentro (Objeto)
+```json
+{
+  "direccion": {
+    "calle": "Calle Mayor 123",
+    "ciudad": "Madrid"
+  }
+}
+```
+
+---
+
+## Ejemplo completo y fácil
+
+Imagina que queremos describir a una persona en JSON:
 
 ```json
 {
-	"producto": "Cuaderno",
-	"precio": 12.5,
-	"disponible": true,
-	"tags": ["papeleria", "escuela"],
-	"proveedor": null
+  "nombre": "Carlos",
+  "apellido": "García",
+  "edad": 22,
+  "esEstudiante": true,
+  "materiasFavoritas": ["JavaScript", "HTML", "CSS"],
+  "contacto": {
+    "email": "carlos@email.com",
+    "telefono": "123-456-789"
+  },
+  "mascota": null
 }
 ```
 
-c) Array de objetos (ejemplo típico en APIs):
+### ¿Qué nos dice esto?
+- Se llama Carlos García
+- Tiene 22 años
+- Sí es estudiante
+- Le gustan 3 materias
+- Su email es carlos@email.com
+- Su teléfono es 123-456-789
+- No tiene mascota
 
-```json
-[
-	{ "id": 1, "nombre": "Luis" },
-	{ "id": 2, "nombre": "María" }
-]
+---
+
+## JSON en JavaScript (Lo práctico)
+
+### De JavaScript a JSON
+```javascript
+// Tengo un objeto en JavaScript
+let persona = {
+  nombre: "Ana",
+  edad: 20
+};
+
+// Lo convierto a JSON (texto)
+let textoJSON = JSON.stringify(persona);
+console.log(textoJSON); // '{"nombre":"Ana","edad":20}'
 ```
 
-## 4. Demo en vivo (guión corto)
+### De JSON a JavaScript
+```javascript
+// Tengo un texto en formato JSON
+let textoJSON = '{"nombre":"Luis","edad":25}';
 
-1. Abrir un editor (VSCode o un editor online).
-2. Escribir el objeto simple del ejemplo y validar con un validador (p. ej. jsonlint.org o la extensión de JSON de VSCode).
-3. Modificar: cambiar un string por comillas simples para mostrar el error y cómo leer el mensaje del validador.
-4. Mostrar cómo convertir JSON a un objeto en JavaScript (ejemplo corto):
-
-```js
-const jsonText = '{"nombre":"Ana","edad":28}';
-const obj = JSON.parse(jsonText);
-console.log(obj.nombre); // Ana
+// Lo convierto a objeto de JavaScript
+let persona = JSON.parse(textoJSON);
+console.log(persona.nombre); // "Luis"
 ```
 
-Y cómo convertir un objeto a JSON:
+### Recuerda:
+- `JSON.stringify()` = Objeto → Texto JSON
+- `JSON.parse()` = Texto JSON → Objeto
 
-```js
-const texto = JSON.stringify(obj);
-console.log(texto); // '{"nombre":"Ana","edad":28}'
-```
+---
 
-## 5. Ejercicios (para clase)
+## Ejercicio súper fácil 🎯
 
-Ejercicio 1 (fácil): Crear un objeto JSON que represente a una persona con: nombre, edad y ciudad.
-
-Ejercicio 2 (fácil): Crear un arreglo JSON con 3 frutas.
-
-Ejercicio 3 (intermedio): Crear un objeto llamado "curso" con: titulo, duracion (horas), docentes (arreglo de nombres) y online (booleano).
-
-Ejercicio 4 (intermedio): Dado el siguiente JSON, acceder en JavaScript al nombre del segundo alumno:
-
-```js
-const data = '{ "alumnos": [{"nombre":"Diego"},{"nombre":"Carla"}] }';
-// ¿Cómo obtener "Carla"?
-```
-
-Ejercicio 5 (desafío): Escribir un JSON válido que represente una lista de tareas, cada tarea tiene id, descripcion, completada y etiquetas (array). Crear 3 tareas con distintos estados.
-
-## 6. Soluciones rápidas
-
-Solución 1:
+### Paso 1: Crear tu primer JSON
+Crea un archivo con tu información personal:
 
 ```json
 {
-	"nombre": "Pablo",
-	"edad": 34,
-	"ciudad": "Quito"
+  "nombre": "Tu nombre aquí",
+  "edad": 0,
+  "esEstudiante": true,
+  "materiaFavorita": "JavaScript"
 }
 ```
 
-Solución 2:
+### Paso 2: Probarlo en JavaScript
+```javascript
+// Copia tu JSON aquí
+let miInfo = '{"nombre":"Tu nombre","edad":20,"esEstudiante":true}';
 
-```json
-["manzana", "banana", "uva"]
+// Convertirlo a objeto
+let persona = JSON.parse(miInfo);
+
+// Mostrar la información
+console.log("Hola, soy " + persona.nombre);
+console.log("Tengo " + persona.edad + " años");
 ```
 
-Solución 3:
+---
 
+## Errores típicos de principiantes
+
+### Error 1: Usar comillas simples
+```javascript
+// ❌ Mal
+'{"nombre": 'Juan'}'
+
+// ✅ Bien
+'{"nombre": "Juan"}'
+```
+
+### Error 2: Olvidar comillas en las claves
+```javascript
+// ❌ Mal
+'{nombre: "Juan"}'
+
+// ✅ Bien
+'{"nombre": "Juan"}'
+```
+
+### Error 3: Poner coma al final
+```javascript
+// ❌ Mal
+'{"nombre": "Juan",}'
+
+// ✅ Bien
+'{"nombre": "Juan"}'
+```
+
+---
+
+## ¿Cuándo usamos JSON?
+
+### 1. Cuando una página web pide información a un servidor
+```javascript
+// La página pide información de un usuario
+// El servidor responde con JSON:
+'{"nombre": "Ana", "edad": 25, "email": "ana@email.com"}'
+```
+
+### 2. Para guardar configuraciones
 ```json
 {
-	"titulo": "Introducción a APIs",
-	"duracion": 8,
-	"docentes": ["Ana", "Luis"],
-	"online": true
+  "colorTema": "oscuro",
+  "idioma": "español",
+  "mostrarNotificaciones": true
 }
 ```
 
-Solución 4 (JavaScript):
-
-```js
-const obj = JSON.parse(data);
-console.log(obj.alumnos[1].nombre); // Carla
-```
-
-Solución 5 (ejemplo):
-
+### 3. Para guardar listas de cosas
 ```json
-[
-	{ "id": 1, "descripcion": "Enviar reporte", "completada": false, "etiquetas": ["trabajo"] },
-	{ "id": 2, "descripcion": "Comprar leche", "completada": true, "etiquetas": ["hogar"] },
-	{ "id": 3, "descripcion": "Estudiar JSON", "completada": false, "etiquetas": ["aprendizaje", "programacion"] }
-]
+{
+  "productos": [
+    {"nombre": "Café", "precio": 3.50},
+    {"nombre": "Té", "precio": 2.25}
+  ]
+}
 ```
 
-## 7. Errores comunes y cómo solucionarlos
+---
 
-- Olvidar comillas dobles en claves o strings -> usar validador para ver el error de parseo.
-- Coma extra al final -> el validador indica "Unexpected token".
-- Valores no válidos (NaN, funciones) -> JSON solo soporta tipos primitivos y objetos/arrays.
+## Consejos para principiantes
 
-## 8. Herramientas y recursos útiles
+### 1. Practica escribiendo JSON a mano
+- Empieza con ejemplos simples
+- Siempre revisa que tengas todas las comillas
+- Usa un validador online como jsonlint.com
 
-- Validador online: https://jsonlint.com/ o https://jsonformatter.curiousconcept.com/
-- Extensión VSCode: soporte JSON integrado y linters.
-- Documentación: https://www.json.org/json-es.html
+### 2. Usa las herramientas del navegador
+```javascript
+// Para ver JSON bonito en la consola
+console.log(JSON.stringify(miObjeto, null, 2));
+```
+
+### 3. No te preocupes por memorizar todo
+- Lo importante es entender el concepto
+- Con la práctica se vuelve natural
+- Siempre puedes revisar los ejemplos
+
+---
+
+## Práctica paso a paso
+
+### Ejercicio 1: Tu primer JSON
+Crea un JSON que describa tu comida favorita:
+```json
+{
+  "nombre": "Pizza",
+  "tipo": "italiana",
+  "ingredientes": ["queso", "tomate", "jamón"],
+  "precio": 12.50,
+  "esVegetariana": false
+}
+```
+
+### Ejercicio 2: Convertir a JavaScript
+```javascript
+let comidaJSON = '{"nombre":"Pizza","precio":12.50}';
+let comida = JSON.parse(comidaJSON);
+
+console.log("Mi comida favorita es: " + comida.nombre);
+console.log("Cuesta: $" + comida.precio);
+```
+
+### Ejercicio 3: De JavaScript a JSON
+```javascript
+let miLibro = {
+  titulo: "Harry Potter",
+  autor: "J.K. Rowling",
+  paginas: 500
+};
+
+let libroJSON = JSON.stringify(miLibro);
+console.log(libroJSON);
+```
+
+---
+
+## Resumen para recordar 📚
+
+✅ JSON es una forma organizada de escribir información  
+✅ Siempre usar comillas dobles `"`  
+✅ Las claves (etiquetas) van entre comillas  
+✅ `JSON.stringify()` convierte objeto a texto  
+✅ `JSON.parse()` convierte texto a objeto  
+✅ Es muy usado en páginas web modernas  
