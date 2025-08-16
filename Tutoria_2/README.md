@@ -31,7 +31,7 @@ Reglas importantes (principales errores comunes):
 
 Ejemplo simple (explicado):
 
-```js
+```json
 {
 	"nombre": "Ana",
 	"edad": 28,
